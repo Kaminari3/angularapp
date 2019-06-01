@@ -1,0 +1,45 @@
+<div class="card text-center">
+  <div class="card-header" style="background-color: #9E9E9E">
+    To--Read--App
+  </div>
+  <div class="card-body" style="background-color: #795548">
+    <h5 class="card-title">Remplir le formulaire de l'item </h5>
+    <form [formGroup]="itemsLivreForm" (ngSubmit)="submitBook()">
+      <div class="form-group">
+        <label for="InputTitre">Titre du Livre</label>
+        <input type="text" class="form-control" id="Titre" aria-describedby="titreHelp" placeholder="Entrez le titre du livre" formControlName="titre" required="true">
+        <!-- <small id="titreHelp" class="form-text text-muted">Avouez vous lisez pas de livre.</small> -->
+        <div *ngIf="itemsLivreForm.controls.titre.invalid && (itemsLivreForm.controls.titre.dirty || itemsLivreForm.controls.titre.touched)" class="alert alert-danger">
+          <div *ngIf="itemsLivreForm.controls.titre.errors.required">
+            titre is required.
+          </div>
+          <div *ngIf="itemsLivreForm.controls.titre.errors.minlength">
+            titre must be at least 2 characters long.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="InputDescription">Description</label>
+        <input type="text" class="form-control" id="Description" placeholder="Description" formControlName="description">
+      </div>
+      <div class="form-group">
+        <label for="InputAuteur">Auteur</label>
+        <input type="text" class="form-control" id="Auteur" placeholder="Auteur du livre" formControlName="auteur" required="true">
+        <div *ngIf="itemsLivreForm.controls.auteur.invalid && (itemsLivreForm.controls.auteur.dirty || itemsLivreForm.controls.auteur.touched)" class="alert alert-danger">
+          <div *ngIf="itemsLivreForm.controls.auteur.errors.required">
+            auteur is required.
+          </div>
+          <div *ngIf="itemsLivreForm.controls.auteur.errors.minlength">
+            auteur must be at least 2 characters long.
+          </div>
+        </div>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-default btn-lg btn-round" [disabled]="!itemsLivreForm.valid"> <i class="fas fa-plus-circle fa-3x"></i> </button>
+      </div>
+    </form>
+  </div>
+  <div class="card-footer text-muted" style="background-color: : #9E9E9E">
+    @bakeli-2019
+  </div>
+</div>
